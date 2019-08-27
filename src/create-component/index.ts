@@ -25,8 +25,23 @@ function getComponentFileName(name: string): string {
   return kebabCase(name)
 }
 
-function addFiles() {
+function createFile(
+  options: {
+    dir: string;
+    templateName: string;
+    fileName: string;
+    data: object;
+  }
+) {
+  const { dir, fileName, templateName, data } = options;
 
+  const componentTemplate = readFileSync(join(__dirname, `./templates/${templateName}`), 'utf-8');
+
+  const compiled = template(componentTemplate.toString());
+
+  const text = compiled(data);
+
+  writeFileSync(join(dir, fileName), text);
 }
 
 function main(
@@ -48,15 +63,46 @@ function main(
   }
 
   // 生成组件文件
-  const configTemplate = readFileSync(join(__dirname, './templates/component.ts.tpl'), 'utf-8');
-
-  const compiled = template(configTemplate.toString());
-
-  const componentFileText = compiled({
-    name: componentName
+  createFile({
+    dir: componentDir,
+    templateName: 'component.ts.tpl',
+    fileName: `${componentFileName}.tsx`,
+    data: {
+      name: componentName
+    }
   });
 
-  writeFileSync(join(componentDir, `${componentFileName}.tsx`), componentFileText);
+  // 生成Index文件
+  createFile({
+    dir: componentDir,
+    templateName: 'index.ts.tpl',
+    fileName: `index.tsx`,
+    data: {
+      name: componentName,
+      fileName: componentFileName
+    }
+  });
+
+  // 生成index.en-US.md
+  createFile({
+    dir: componentDir,
+    templateName: 'index.en-US.md.tpl',
+    fileName: `index.en-US.md`,
+    data: {
+      componentName: componentName
+    }
+  });
+
+  // 生成index.zh-CN.md
+  createFile({
+    dir: componentDir,
+    templateName: 'index.zh-CN.md.tpl',
+    fileName: `index.zh-CN.md`,
+    data: {
+      componentName: componentName
+    }
+  });
+
 }
 
 export default main;
