@@ -1,3 +1,5 @@
+import { resolve } from 'path';
+
 export default {
-  test: 123
+  componentDir: resolve(__dirname, 'examples')
 }
