@@ -1,5 +1,5 @@
 import { resolve } from 'path';
 
 export default {
-  componentDir: resolve(__dirname, 'examples')
+  libraryDir: resolve(__dirname, 'examples')
 }

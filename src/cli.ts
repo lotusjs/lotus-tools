@@ -1,16 +1,14 @@
 #!/usr/bin/env node
 
-import { Command } from 'commander';
-import * as packageInfo from '../package.json';
-import createComponent from './create-component';
-
 // 控制日志输出
 process.env.DEBUG = 'lotus-tools:*';
 
-const version = packageInfo.version;
-const Debugger = require('debug');
-const error = Debugger('lotus-tools:error');
+import { Command } from 'commander';
+import * as packageInfo from '../package.json';
+import createComponent from './create-component';
+import debug from './debug';
 
+const version = packageInfo.version;
 const program = new Command();
 
 program
@@ -38,7 +36,7 @@ program
   .option("-n, --component_name [name]", "component name")
   .action(function(options) {
     if (!options || !options.component_name) {
-      error('请输入组件名称，例如: lotus-tools create -n button');
+      debug.error('Component name is required，example: lotus-tools create -n button');
       return;
     }
     createComponent(options.component_name)

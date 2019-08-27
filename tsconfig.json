@@ -5,15 +5,20 @@
     "lib": ["es6"],
     "resolveJsonModule": true,
     "sourceMap": true,
-    "rootDir": "src",
     "strict": true,
+    "jsx": "react",
     "noImplicitAny": false,
     "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "rootDirs": [
+      "/src",
+      "/examples"
+    ]
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "examples/**/*"
   ],
   "exclude": [
     "node_modules"

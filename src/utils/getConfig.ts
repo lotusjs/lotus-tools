@@ -33,7 +33,7 @@ const getConfig = (cwd?: string) => {
 
   // 默认配置
   const defaultConfig: IOptions = {
-    componentDir: resolve(cwd, 'components')
+    libraryDir: resolve(cwd, 'components')
   };
 
   return Object.assign({}, defaultConfig, userConfig);

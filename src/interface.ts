@@ -1,4 +1,4 @@
 export interface IOptions {
-  // 组件目录
-  componentDir?: string;
+  // 组件库目录
+  libraryDir?: string;
 }
