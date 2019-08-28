@@ -1,3 +1,3 @@
 export default {
-  libraryDir: 'examples'
+  libraryDir: 'examples/components'
 }
