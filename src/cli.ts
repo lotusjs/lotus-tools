@@ -10,10 +10,35 @@ import debug from './debug';
 
 const version = packageInfo.version;
 const program = new Command();
+const gulp = require('gulp');
+
+export function runTask(taskName) {
+  const metadata: {
+    [key: string]: any
+  } = {
+    task: taskName
+  };
+  const taskInstance = gulp.task(taskName);
+  if (taskInstance === undefined) {
+    gulp.emit('task_not_found', metadata);
+    return;
+  }
+  const start = process.hrtime();
+  gulp.emit('task_start', metadata);
+  try {
+    taskInstance.apply(gulp);
+    metadata.hrDuration = process.hrtime(start);
+    gulp.emit('task_stop', metadata);
+    gulp.emit('stop');
+  } catch (err) {
+    err.hrDuration = process.hrtime(start);
+    err.task = metadata.task;
+    gulp.emit('task_err', err);
+  }
+}
 
 program
-  .version(version, '-v, --version', 'output the current version')
-  .option('-i, --init', 'init');
+  .version(version, '-v, --version', 'output the current version');
 
 /**
  * 编译组件命令
@@ -42,6 +67,21 @@ program
     createComponent(options.component_name)
   });
 
+// 其他命令
+program
+  .command('run [name]')
+  .description('run specified task')
+  .action(function(options) {
+    const task = options;
+    if (!task) {
+      program.help();
+    } else {
+      console.log('lotus-tools run', task);
+
+      require('./gulpfile');
+
+      runTask(task);
+    }
+  });
 
 program.parse(process.argv);
-
