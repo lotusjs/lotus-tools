@@ -52,12 +52,12 @@ function main(
   const componentName = getComponentName(name);
   const componentFileName = getComponentFileName(name);
 
-  const componentDir = resolve(libraryDir + '', componentFileName);
+  const componentAbsoluteDir = resolve(libraryDir + '', componentFileName);
 
   // 组件目录是否存在
-  if (!existsSync(componentDir)) {
+  if (!existsSync(componentAbsoluteDir)) {
     // 可能存在多级
-    mkdirPlus.sync(componentDir);
+    mkdirPlus.sync(componentAbsoluteDir);
   } else {
     debug.error(`${componentName} already exists, please choose another name.`);
     process.exit(2);
@@ -65,7 +65,7 @@ function main(
 
   // 生成组件文件
   createFile({
-    dir: componentDir,
+    dir: componentAbsoluteDir,
     templateName: 'component.ts.tpl',
     fileName: `${componentFileName}.tsx`,
     data: {
@@ -75,7 +75,7 @@ function main(
 
   // 生成Index文件
   createFile({
-    dir: componentDir,
+    dir: componentAbsoluteDir,
     templateName: 'index.ts.tpl',
     fileName: `index.tsx`,
     data: {
@@ -86,7 +86,7 @@ function main(
 
   // 生成index.en-US.md
   createFile({
-    dir: componentDir,
+    dir: componentAbsoluteDir,
     templateName: 'index.en-US.md.tpl',
     fileName: `index.en-US.md`,
     data: {
@@ -96,7 +96,7 @@ function main(
 
   // 生成index.zh-CN.md
   createFile({
-    dir: componentDir,
+    dir: componentAbsoluteDir,
     templateName: 'index.zh-CN.md.tpl',
     fileName: `index.zh-CN.md`,
     data: {
