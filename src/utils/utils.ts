@@ -2,8 +2,6 @@ import { join } from 'path';
 import getConfig from './getConfig';
 import debug from '../debug';
 
-const cwd = process.cwd();
-
 /**
  * 获取组件目录
  */
@@ -23,5 +21,6 @@ export function getComponentDir(): string {
 }
 
 export function getProjectPath(...filePath) {
-  return join(cwd, ...filePath);
+  const libraryDir = getConfig().libraryDir as string;
+  return join(libraryDir, '../', ...filePath);
 }

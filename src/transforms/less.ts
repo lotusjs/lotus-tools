@@ -1,7 +1,7 @@
 import { resolve, dirname } from 'path';
 import { readFileSync } from 'fs';
-import postCss from 'postcss';
-import less from 'less';
+import * as postCss from 'postcss';
+import * as less from 'less';
 import postCssConfig from './postcss-config';
 
 export interface IOptions {
