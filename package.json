@@ -32,16 +32,22 @@
     "gulp-watch": "^5.0.1",
     "joycon": "^2.2.5",
     "lodash": "^4.17.15",
+    "mkdirp": "^0.5.1",
     "require-from-string": "^2.0.2"
   },
   "devDependencies": {
     "@types/debug": "^4.1.5",
+    "@types/gulp": "^4.0.6",
     "@types/lodash": "^4.14.137",
+    "@types/mkdirp": "^0.5.2",
     "@types/node": "^12.7.2",
     "@types/react": "^16.9.2",
     "father-build": "^1.6.1",
     "react": "^16.9.0",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
+  },
+  "engines": {
+    "node": ">=8.9.0"
   }
 }

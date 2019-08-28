@@ -30,6 +30,7 @@ const getConfig = (cwd?: string) => {
 
   // 用户配置
   const userConfig = getUserConfig(cwd) || {};
+  userConfig.libraryDir = resolve(cwd, userConfig.libraryDir as string);
 
   // 默认配置
   const defaultConfig: IOptions = {

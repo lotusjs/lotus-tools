@@ -1,6 +1,7 @@
 import { resolve, join } from 'path';
 import { template } from 'lodash';
-import { existsSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
+import * as mkdirPlus from 'mkdirp';
+import { existsSync, writeFileSync, readFileSync } from 'fs';
 import { camelCase, upperFirst, kebabCase } from 'lodash';
 import getConfig from '../utils/getConfig';
 import debug from '../debug';
@@ -51,12 +52,12 @@ function main(
   const componentName = getComponentName(name);
   const componentFileName = getComponentFileName(name);
 
-
   const componentDir = resolve(libraryDir + '', componentFileName);
 
   // 组件目录是否存在
   if (!existsSync(componentDir)) {
-    mkdirSync(componentDir);
+    // 可能存在多级
+    mkdirPlus.sync(componentDir);
   } else {
     debug.error(`${componentName} already exists, please choose another name.`);
     process.exit(2);
