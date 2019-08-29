@@ -1,5 +1,6 @@
 import * as gulp from 'gulp';
-import { build } from './tasks';
+import { build } from './tasks/build';
+import { getComponentDir } from './utils/utils';
 import debug from './debug';
 
 // 编译为ES模块
@@ -16,3 +17,10 @@ gulp.task('build-with-lib', done => {
 
 // 编译组件
 gulp.task('build', gulp.parallel('build-with-es', 'build-with-lib'));
+
+// watch组件修改
+gulp.task('start', () => {
+  debug.log('start watch ....');
+  const componentDir = getComponentDir();
+  gulp.watch([`${componentDir}/**/*`], gulp.parallel('build'));
+});
