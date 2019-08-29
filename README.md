@@ -2,7 +2,7 @@
 
 <p align="center">
  <a href="https://npmjs.org/package/@lotus-ui/tools">
-   <img src="https://img.shields.io/npm/v/@lotus-ui/tools.svg.svg?style=flat">
+   <img src="https://img.shields.io/npm/v/@lotus-ui/tools.svg?style=flat">
  </a>
 </p>
 
