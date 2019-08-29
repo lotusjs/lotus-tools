@@ -1,14 +1,12 @@
-function resolve(moduleName) {
-  return require.resolve(moduleName);
-}
+import { resolve } from './utils';
 
-export default function () {
+export default function (modules: boolean) {
   const plugins = [
     [
       resolve('@babel/plugin-transform-typescript'),
       {
         isTSX: true,
-      },
+      }
     ],
     resolve('babel-plugin-inline-import-data-uri'),
     resolve('@babel/plugin-transform-member-expression-literals'),
@@ -17,8 +15,8 @@ export default function () {
     [
       resolve('@babel/plugin-transform-runtime'),
       {
-        helpers: false,
-      },
+        helpers: false
+      }
     ],
     resolve('@babel/plugin-transform-spread'),
     resolve('@babel/plugin-transform-template-literals'),
@@ -28,10 +26,10 @@ export default function () {
     [
       resolve('@babel/plugin-proposal-decorators'),
       {
-        legacy: true,
-      },
+        legacy: true
+      }
     ],
-    resolve('@babel/plugin-proposal-class-properties'),
+    resolve('@babel/plugin-proposal-class-properties')
   ];
 
   return {
@@ -40,6 +38,7 @@ export default function () {
       [
         resolve('@babel/preset-env'),
         {
+          modules,
           targets: {
             browsers: [
               'last 2 versions',
@@ -47,15 +46,12 @@ export default function () {
               '> 1%',
               'ie >= 9',
               'iOS >= 8',
-              'Android >= 4',
-            ],
-          },
-        },
-      ],
+              'Android >= 4'
+            ]
+          }
+        }
+      ]
     ],
-    ignore: [
-      '**/*.d.ts'
-    ],
-    plugins,
+    plugins
   };
 }

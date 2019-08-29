@@ -1,18 +1,24 @@
 import * as merge2 from 'merge2';
+import * as rimraf from 'rimraf';
 import { buildLess } from './less';
 import { copyAssets } from './assets';
-import { getProjectPath } from '../utils/utils';
+import { buildTs } from './typescript';
+import { getDirPath } from '../utils/utils';
 
-export type IType  = 'es' | 'lib';
+const esDir = getDirPath('es');
+const libDir = getDirPath('lib');
 
-const esDir = getProjectPath('es');
-const libDir = getProjectPath('lib');
+export function build(modules?: boolean) {
+  const dir = modules === false ? esDir : libDir;
 
-export function build(type: IType) {
-  const dir = type === 'es' ? esDir : libDir;
+  // 删除输出目录
+  rimraf.sync(dir);
 
   return merge2([
     buildLess(dir),
-    copyAssets(dir)
+    copyAssets(dir),
+    buildTs({
+      modules
+    })
   ])
 }

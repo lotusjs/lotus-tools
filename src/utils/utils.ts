@@ -2,6 +2,10 @@ import { join } from 'path';
 import getConfig from './getConfig';
 import debug from '../debug';
 
+export function resolve(moduleName) {
+  return require.resolve(moduleName);
+}
+
 /**
  * 获取组件目录
  */
@@ -21,6 +25,14 @@ export function getComponentDir(): string {
 }
 
 export function getProjectPath(...filePath) {
+  return join(process.cwd(), ...filePath);
+}
+
+/**
+ * 获取相对于组件目录的路径
+ * @param filePath
+ */
+export function getDirPath(...filePath) {
   const libraryDir = getConfig().libraryDir as string;
   return join(libraryDir, '../', ...filePath);
 }
