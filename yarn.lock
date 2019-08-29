@@ -1138,6 +1138,13 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.137.tgz#8a4804937dc6462274ffcc088df8f14fc1b368e2"
   integrity sha512-g4rNK5SRKloO+sUGbuO7aPtwbwzMgjK+bm9BBhLD7jGUiGR7zhwYEhSln/ihgYQBeIJ5j7xjyaYzrWTcu3UotQ==
 
+"@types/merge2@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@types/merge2/-/merge2-1.1.4.tgz#0a650e1cc215a2f7b80402eab6b6a236e602f7a3"
+  integrity sha512-GjaXY4OultxbaOOk7lCLO7xvEcFpdjExC605YmfI6X29vhHKpJfMWKCDZd3x+BITrZaXKg97DgV/SdGVSwdzxA==
+  dependencies:
+    "@types/node" "*"
+
 "@types/minimatch@*":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
@@ -4670,6 +4677,11 @@ merge-stream@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/merge-stream/-/merge-stream-2.0.0.tgz#52823629a14dd00c9770fb6ad47dc6310f2c1f60"
   integrity sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==
+
+merge2@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/merge2/-/merge2-1.2.4.tgz#c9269589e6885a60cf80605d9522d4b67ca646e3"
+  integrity sha512-FYE8xI+6pjFOhokZu0We3S5NKCirLbCzSh2Usf3qEyr4X8U+0jNg9P8RZ4qz+V2UoECLVwSyzU3LxXBaLGtD3A==
 
 micromatch@^2.1.5:
   version "2.3.11"

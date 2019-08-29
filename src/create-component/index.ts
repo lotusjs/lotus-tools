@@ -56,6 +56,7 @@ function createFile(
 function main(
   name: string
 ) {
+  debug.log('start create');
   const { libraryDir } = getConfig();
   const componentName = getComponentName(name);
   const componentFileName = getComponentFileName(name);
@@ -128,7 +129,7 @@ function main(
     templateName: 'style-index.ts.tpl',
     fileName: `style/index.tsx`
   });
-
+  debug.log('create success');
 }
 
 export default main;

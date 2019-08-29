@@ -1,14 +1,9 @@
 import * as gulp from 'gulp';
 import * as through2 from 'through2';
-import {
-  getComponentDir,
-  getProjectPath
-} from '../utils/utils';
+import { getComponentDir } from '../utils/utils';
 import transformLess from '../transforms/less';
 
-const esDir = getProjectPath('es');
-
-export function buildLess() {
+export function buildLess(dir: string) {
   const componentDir = getComponentDir();
 
   return gulp.src([`${componentDir}/**/*.less`])
@@ -25,5 +20,5 @@ export function buildLess() {
           console.error(e);
         });
     }))
-    .pipe(gulp.dest(esDir));
+    .pipe(gulp.dest(dir));
 }

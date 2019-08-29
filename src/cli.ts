@@ -41,17 +41,6 @@ program
   .version(version, '-v, --version', 'output the current version');
 
 /**
- * 编译组件命令
- */
-program
-  .command('build')
-  .description('build component')
-  .option("-s, --setup_mode [mode]", "Which setup mode to use")
-  .action(function(env, options){
-    console.log('test build');
-  });
-
-/**
  * 创建组件命令
  * @option -n, --component_name 组件名称
  */
