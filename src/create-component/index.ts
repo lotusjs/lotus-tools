@@ -31,7 +31,7 @@ function createFile(
     dir: string;
     templateName: string;
     fileName: string;
-    data: object;
+    data?: object;
   }
 ) {
   const { dir, fileName, templateName, data } = options;
@@ -41,6 +41,14 @@ function createFile(
   const compiled = template(componentTemplate.toString());
 
   const text = compiled(data);
+
+  // 检查是否是多级目录
+  if (fileName.includes('/')) {
+    const paths = fileName.split('/');
+    paths.pop();
+    // 先创建目录
+    mkdirPlus.sync(join(dir, paths.join('/')));
+  }
 
   writeFileSync(join(dir, fileName), text);
 }
@@ -102,6 +110,23 @@ function main(
     data: {
       componentName: componentName
     }
+  });
+
+  // 生成style/index.less
+  createFile({
+    dir: componentAbsoluteDir,
+    templateName: 'style-index.less.tpl',
+    fileName: `style/index.less`,
+    data: {
+      name: componentFileName
+    }
+  });
+
+  // style/index.ts
+  createFile({
+    dir: componentAbsoluteDir,
+    templateName: 'style-index.ts.tpl',
+    fileName: `style/index.tsx`
   });
 
 }
