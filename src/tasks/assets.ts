@@ -1,12 +1,10 @@
 import * as gulp from 'gulp';
-import { getComponentDir, getProjectPath } from '../utils/utils';
-
-const esDir = getProjectPath('es');
+import { getComponentDir } from '../utils/utils';
 
 // 拷贝静态资源
-export function copyAssets() {
+export function copyAssets(dir: string) {
   const componentDir = getComponentDir();
 
   return gulp.src([`${componentDir}/**/*.@(png|svg|jpg)`])
-    .pipe(gulp.dest(esDir));
+    .pipe(gulp.dest(dir));
 }
