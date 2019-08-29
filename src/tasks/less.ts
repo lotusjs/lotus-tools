@@ -1,8 +1,10 @@
 import * as gulp from 'gulp';
 import * as through2 from 'through2';
-import { getComponentDir } from '../utils/utils';
+import {
+  getComponentDir,
+  getProjectPath
+} from '../utils/utils';
 import transformLess from '../transforms/less';
-import { getProjectPath } from '../utils/utils';
 
 const esDir = getProjectPath('es');
 
