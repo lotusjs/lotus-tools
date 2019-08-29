@@ -12,9 +12,9 @@ export default function () {
 
   return assign(
     {
-      noUnusedParameters: true,
-      noUnusedLocals: true,
-      strictNullChecks: true,
+      // noUnusedParameters: true,
+      // noUnusedLocals: true,
+      // strictNullChecks: true,
       target: 'es6',
       jsx: 'preserve',
       moduleResolution: 'node',

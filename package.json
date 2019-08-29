@@ -1,6 +1,6 @@
 {
   "name": "@lotus-ui/tools",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "组件库打包工具",
   "main": "index.js",
   "repository": "https://github.com/lotus-ui/lotus-tools",
@@ -48,6 +48,7 @@
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-less": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.5",
     "gulp-strip-code": "^0.1.4",
     "gulp-typescript": "^5.0.1",
     "joycon": "^2.2.5",
@@ -78,7 +79,6 @@
     "@types/rimraf": "^2.0.2",
     "@types/through2": "^2.0.34",
     "father-build": "^1.6.1",
-    "gulp-sourcemaps": "^2.6.5",
     "react": "^16.9.0",
     "ts-node": "^8.3.0"
   },
