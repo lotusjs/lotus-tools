@@ -9,6 +9,12 @@
  </a>
 </p>
 
+## 特性
+
+💡 TypeScript: 使用TypeScript编写
+✨ babel-plugin-import: 支持[babel-plugin-import](https://github.com/ant-design/babel-plugin-import)
+🎉 module: 直接生成es(esm)、lib(cjs)目录
+
 ## 安装
 
 ```
