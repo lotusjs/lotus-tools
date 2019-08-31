@@ -4,6 +4,9 @@
  <a href="https://npmjs.org/package/@lotus-ui/tools">
    <img src="https://img.shields.io/npm/v/@lotus-ui/tools.svg?style=flat">
  </a>
+ <a href="https://npmjs.org/package/@lotus-ui/tools">
+   <img src="https://img.shields.io/npm/dm/@lotus-ui/tools.svg?style=flat">
+ </a>
 </p>
 
 ## 安装
