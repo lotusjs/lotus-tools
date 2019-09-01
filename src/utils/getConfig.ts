@@ -18,7 +18,11 @@ const getUserConfig = (cwd?: string): IOptions => {
     cwd
   });
 
-  return userConfig.data || {};
+  const defaultConfig: IOptions = {
+    libraryDir: 'components'
+  };
+
+  return Object.assign({}, defaultConfig, userConfig.data);
 };
 
 /**
@@ -32,12 +36,7 @@ const getConfig = (cwd?: string) => {
   const userConfig = getUserConfig(cwd) || {};
   userConfig.libraryDir = resolve(cwd, userConfig.libraryDir as string);
 
-  // 默认配置
-  const defaultConfig: IOptions = {
-    libraryDir: resolve(cwd, 'components')
-  };
-
-  return Object.assign({}, defaultConfig, userConfig);
+  return userConfig;
 };
 
 export default getConfig;
