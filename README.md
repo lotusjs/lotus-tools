@@ -42,11 +42,38 @@ yarn global add @lotus-ui/tools
 * 命令行
 
 ```
-// 在当前目录下执行
+// 在项目目录下执行
 
 // 创建一个组件
 lotus-tools create -n button
 
+// 开发
+lotus-tools run start
+
 // 执行编译 
 lotus-tools run build
+```
+
+## 📝 配置
+
+支持两种配置文件格式
+
+* js: `lotus-tools.config.js`
+* ts: `lotus-tools.config.ts`
+
+**配置项**
+
+### libraryDir
+
+* 类型: `String`
+* 默认: `components`
+* 描述: 组件存放目录
+
+**Example**
+
+```
+// lotus-tools.config.ts
+export default {
+  libraryDir: 'examples/components'
+}
 ```
