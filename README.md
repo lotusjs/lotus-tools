@@ -9,13 +9,15 @@
  </a>
 </p>
 
-## 特性
+## ✨ 特征
 
-* 💡 TypeScript: 使用TypeScript编写
-* ✨ babel-plugin-import: 支持[babel-plugin-import](https://github.com/ant-design/babel-plugin-import)
+* 🔥 TypeScript: 使用TypeScript编写
+* 🏖 babel-plugin-import: 支持[babel-plugin-import](https://github.com/ant-design/babel-plugin-import)
 * 🎉 module: 直接生成es(esm)、lib(cjs)目录
 
-## 安装
+## 📦 安装
+
+* 项目目录安装
 
 ```
 // npm 
@@ -25,9 +27,17 @@ npm install --dev @lotus-ui/tools
 yarn add --dev @lotus-ui/tools
 ```
 
-**也可全局安装**
+* 全局安装
 
-## 使用
+```
+// npm
+npm install --global @lotus-ui/tools
+
+// yarn 
+yarn global add @lotus-ui/tools
+```
+
+## 🔨 使用
 
 * 命令行
 
