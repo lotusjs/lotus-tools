@@ -7,12 +7,14 @@ import debug from './debug';
 gulp.task('build-with-es', done => {
   debug.log('Build to es...');
   build(false).on('finish', done);
+  debug.log('build to es success');
 });
 
 // 编译为JS模块
 gulp.task('build-with-lib', done => {
   debug.log('build to lib...');
   build().on('finish', done);
+  debug.log('build to lib success');
 });
 
 // 编译组件

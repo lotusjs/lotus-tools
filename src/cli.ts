@@ -65,7 +65,7 @@ program
     if (!task) {
       program.help();
     } else {
-      console.log('lotus-tools run', task);
+      process.env.TASK_NAME = task;
 
       require('./gulpfile');
 
