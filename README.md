@@ -48,10 +48,10 @@ yarn global add @lotus-ui/tools
 lotus-tools create -n button
 
 // 开发
-lotus-tools run start
+lotus-tools build --watch
 
 // 执行编译 
-lotus-tools run build
+lotus-tools build
 ```
 
 ## 📝 配置
@@ -69,11 +69,20 @@ lotus-tools run build
 * 默认: `components`
 * 描述: 组件存放目录
 
+###  createComponent
+
+* 类型: `object`
+* 默认: `{ locale: true }`
+* 描述: 创建组件配置
+
 **Example**
 
 ```
 // lotus-tools.config.ts
 export default {
-  libraryDir: 'examples/components'
+  libraryDir: 'examples/components',
+  createComponent: {
+    locale: false
+  }
 }
 ```
