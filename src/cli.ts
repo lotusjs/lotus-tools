@@ -56,21 +56,38 @@ program
     createComponent(options.component_name)
   });
 
-// 其他命令
+/**
+ * 编译组件命令
+ * @option -w, --watch 是否监听文件改动
+ */
 program
-  .command('run [name]')
-  .description('run specified task')
+  .command('build')
+  .description('build component')
+  .option("-w, --watch", "watch file change")
   .action(function(options) {
-    const task = options;
-    if (!task) {
-      program.help();
+    require('./gulpfile');
+    if (options.watch) {
+      runTask('start');
     } else {
-      process.env.TASK_NAME = task;
-
-      require('./gulpfile');
-
-      runTask(task);
+      runTask('build');
     }
   });
+
+// 其他命令
+// program
+//   .command('run [name]')
+//   .description('run specified task')
+//   .action(function(options) {
+//     const task = options;
+//     if (!task) {
+//       program.help();
+//     } else {
+//       process.env.TASK_NAME = task;
+//
+//       require('./gulpfile');
+//
+//       runTask(task);
+//     }
+//   });
 
 program.parse(process.argv);

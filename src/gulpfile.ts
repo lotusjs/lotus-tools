@@ -22,7 +22,7 @@ gulp.task('build', gulp.parallel('build-with-es', 'build-with-lib'));
 
 // watch组件修改
 gulp.task('start', gulp.series('build', () => {
-  debug.log('start watch ....');
+  debug.log('start watch ...');
   const componentDir = getComponentDir();
   gulp.watch([`${componentDir}/**/*`], gulp.parallel('build'));
 }));
