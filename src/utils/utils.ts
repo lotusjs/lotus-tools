@@ -36,3 +36,22 @@ export function getDirPath(...filePath) {
   const libraryDir = getConfig().libraryDir as string;
   return join(libraryDir, '../', ...filePath);
 }
+
+function camelize(str) {
+  return str.replace(/-(\w)/g, (_, c) => c ? c.toUpperCase() : '')
+}
+
+export function cleanArgs(cmd): {
+  [key: string]: any
+} {
+  const args = {};
+  cmd.options.forEach(o => {
+    const key = camelize(o.long.replace(/^--/, ''));
+    // if an option is not present and Command has a method with the same name
+    // it should not be copied
+    if (typeof cmd[key] !== 'function' && typeof cmd[key] !== 'undefined') {
+      args[key] = cmd[key]
+    }
+  });
+  return args;
+}

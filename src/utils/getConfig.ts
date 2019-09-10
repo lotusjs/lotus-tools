@@ -19,7 +19,10 @@ const getUserConfig = (cwd?: string): IOptions => {
   });
 
   const defaultConfig: IOptions = {
-    libraryDir: 'components'
+    libraryDir: 'components',
+    createComponent: {
+      locale: true
+    }
   };
 
   return Object.assign({}, defaultConfig, userConfig.data);

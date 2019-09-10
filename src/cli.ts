@@ -7,6 +7,7 @@ import { Command } from 'commander';
 import * as packageInfo from '../package.json';
 import createComponent from './create-component';
 import debug from './debug';
+import { cleanArgs } from './utils/utils';
 
 const version = packageInfo.version;
 const program = new Command();
@@ -48,12 +49,14 @@ program
   .command('create')
   .description('create component')
   .option("-n, --component_name [name]", "component name")
-  .action(function(options) {
-    if (!options || !options.component_name) {
+  .option("-l, --locale", "locale")
+  .action((cmd) => {
+    const options = cleanArgs(cmd);
+    if (!options.component_name) {
       debug.error('Component name is required，example: lotus-tools create -n button');
       return;
     }
-    createComponent(options.component_name)
+    createComponent(options)
   });
 
 /**
@@ -64,7 +67,8 @@ program
   .command('build')
   .description('build component')
   .option("-w, --watch", "watch file change")
-  .action(function(options) {
+  .action((cmd) => {
+    const options = cleanArgs(cmd);
     require('./gulpfile');
     if (options.watch) {
       process.env.TASK_NAME = 'start';

@@ -54,10 +54,15 @@ function createFile(
 }
 
 function main(
-  name: string
+  options
 ) {
   debug.log('start create');
-  const { libraryDir } = getConfig();
+  const { libraryDir, createComponent = {} } = getConfig();
+  const createComponentOptions = Object.assign(options, createComponent);
+
+  console.log(createComponentOptions);
+
+  const name= createComponentOptions.component_name;
   const componentName = getComponentName(name);
   const componentFileName = getComponentFileName(name);
 
@@ -93,25 +98,37 @@ function main(
     }
   });
 
-  // 生成index.en-US.md
-  createFile({
-    dir: componentAbsoluteDir,
-    templateName: 'index.en-US.md.tpl',
-    fileName: `index.en-US.md`,
-    data: {
-      componentName: componentName
-    }
-  });
+  if (createComponent.locale) {
+    // 生成index.en-US.md
+    createFile({
+      dir: componentAbsoluteDir,
+      templateName: 'index.en-US.md.tpl',
+      fileName: `index.en-US.md`,
+      data: {
+        componentName: componentName
+      }
+    });
 
-  // 生成index.zh-CN.md
-  createFile({
-    dir: componentAbsoluteDir,
-    templateName: 'index.zh-CN.md.tpl',
-    fileName: `index.zh-CN.md`,
-    data: {
-      componentName: componentName
-    }
-  });
+    // 生成index.zh-CN.md
+    createFile({
+      dir: componentAbsoluteDir,
+      templateName: 'index.zh-CN.md.tpl',
+      fileName: `index.zh-CN.md`,
+      data: {
+        componentName: componentName
+      }
+    });
+  } else {
+    // 生成index.md
+    createFile({
+      dir: componentAbsoluteDir,
+      templateName: 'index.zh-CN.md.tpl',
+      fileName: `index.md`,
+      data: {
+        componentName: componentName
+      }
+    });
+  }
 
   // 生成style/index.less
   createFile({

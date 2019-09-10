@@ -1,3 +1,6 @@
 export default {
-  libraryDir: 'examples/components'
+  libraryDir: 'examples/components',
+  createComponent: {
+    locale: false
+  }
 }
