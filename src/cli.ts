@@ -67,27 +67,12 @@ program
   .action(function(options) {
     require('./gulpfile');
     if (options.watch) {
+      process.env.TASK_NAME = 'start';
       runTask('start');
     } else {
+      process.env.TASK_NAME = 'build';
       runTask('build');
     }
   });
-
-// 其他命令
-// program
-//   .command('run [name]')
-//   .description('run specified task')
-//   .action(function(options) {
-//     const task = options;
-//     if (!task) {
-//       program.help();
-//     } else {
-//       process.env.TASK_NAME = task;
-//
-//       require('./gulpfile');
-//
-//       runTask(task);
-//     }
-//   });
 
 program.parse(process.argv);
