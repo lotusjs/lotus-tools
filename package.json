@@ -1,6 +1,6 @@
 {
   "name": "@lotus-ui/tools",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "组件库打包工具",
   "main": "index.js",
   "repository": "https://github.com/lotus-ui/lotus-tools",
