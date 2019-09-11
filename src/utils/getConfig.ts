@@ -1,4 +1,5 @@
 import { resolve } from 'path';
+import { merge } from 'lodash';
 import { LoadResult } from 'joycon';
 import configLoader from './config-loader';
 import { IOptions } from '../interface';
@@ -21,11 +22,12 @@ const getUserConfig = (cwd?: string): IOptions => {
   const defaultConfig: IOptions = {
     libraryDir: 'components',
     createComponent: {
-      locale: true
+      locale: true,
+      prefixCls: 'lotus'
     }
   };
 
-  return Object.assign({}, defaultConfig, userConfig.data);
+  return merge(defaultConfig, userConfig.data);
 };
 
 /**

@@ -60,9 +60,7 @@ function main(
   const { libraryDir, createComponent = {} } = getConfig();
   const createComponentOptions = Object.assign(options, createComponent);
 
-  console.log(createComponentOptions);
-
-  const name= createComponentOptions.component_name;
+  const name = createComponentOptions.component_name;
   const componentName = getComponentName(name);
   const componentFileName = getComponentFileName(name);
 
@@ -75,6 +73,42 @@ function main(
   } else {
     debug.error(`${componentName} already exists, please choose another name.`);
     process.exit(2);
+  }
+
+  const styleAbsoluteDir = resolve(libraryDir + '', 'style');
+  const themesAbsoluteDir = resolve(libraryDir + '', 'style/themes');
+
+  // 检查样式目录文件是否存在
+  if (!existsSync(styleAbsoluteDir)) {
+    // 创建样式目录
+    mkdirPlus.sync(styleAbsoluteDir);
+
+    // 生成style/index.less
+    createFile({
+      dir: libraryDir + '',
+      templateName: 'style/index.less.tpl',
+      fileName: `style/index.less`
+    });
+
+    // 创建style/themes目录
+    mkdirPlus.sync(themesAbsoluteDir);
+
+    // 生成style/themes/default.less文件
+    createFile({
+      dir: libraryDir + '',
+      templateName: 'style/themes/default.less.tpl',
+      fileName: `style/themes/default.less`,
+      data: {
+        prefix: createComponentOptions.prefixCls
+      }
+    });
+
+    // 生成style/themes/index.less文件
+    createFile({
+      dir: libraryDir + '',
+      templateName: 'style/themes/index.less.tpl',
+      fileName: `style/themes/index.less`
+    });
   }
 
   // 生成组件文件

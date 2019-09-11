@@ -71,8 +71,27 @@ lotus-tools build
 
 ###  createComponent
 
-* 类型: `object`
-* 默认: `{ locale: true }`
+* 类型: 
+```
+{
+  // 是否支持多语言
+  // 默认: true
+  locale?: boolean;
+  // 组件库前缀
+  // 默认: 'lotus'
+  prefixCls?: string;
+}
+```
+
+* 默认: 
+
+```
+{
+  locale: true,
+  prefixCls: 'lotus'
+}
+```
+
 * 描述: 创建组件配置
 
 **Example**
